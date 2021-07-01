@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      .container{
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container *{
+        margin: 5px;
+      }
+
+      body{
+        display: flex;
+        justify-content: center;
+      }
+
+      #main{
+        margin: auto;
+      }
+
+      .r{
+        display: flex;
+      }
+
+      .field{
+        width: 40px;
+        height: 40px;
+        border: 1px solid grey;
+      }
+
+      .fill{
+        background-color: red;
+      }
+
+      .queen{
+        background-color: black;
+      }
+    </style>
+    <title>Typescript Starter</title>
+	  <meta name="description" content="Typescript Starter">
+	  <meta name="author" content="https://github.com/nea">
+  </head>
+  <body>
+    <div class="container">
+      <label>Area size : </label>
+      <input type="number" value="8">
+      <label>Queens count : </label>
+      <input type="number" value="8">
+      <button id="start-btn">Start</button>
+      <p id="result"></p>
+      <div id="solutions-list"></div>
+      <div id="main"></div>
+    </div> 
+	  <script src="main.js"></script>
+  </body>
+</html> 
