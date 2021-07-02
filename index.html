@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      .container{
+        display: flex;
+        flex-direction: column;
+      }
+
+      #list p{
+        padding: 10px;
+        margin: 10px;
+        border-bottom: 1px solid black;
+        cursor: pointer;
+      }
+
+      .container *{
+        margin: 5px;
+      }
+
+      body{
+        display: flex;
+        justify-content: center;
+      }
+
+      #main{
+        margin: auto;
+      }
+
+      .r{
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+
+      .r div{
+        margin: 0;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid grey;
+      }
+
+      .df{
+        display: flex;
+      }
+
+      .queen{
+        background-color: red;
+      }
+
+      .black{
+        background-color: black;
+      }
+    </style>
+    <title>Queens</title>
+	  <meta name="description" content="Typescript Starter">
+	  <meta name="author" content="https://github.com/nea">
+  </head>
+  <body>
+    <div class="container">
+      <label>Area size : </label>
+      <input type="number" value="8" disabled>
+      <label>Queens count : </label>
+      <input type="number" value="8" disabled>
+      <button id="start-btn">Start</button>
+      <p id="result"></p>
+      <div class="df">
+        <div id="list"></div>
+        <div id="desk"></div>
+      </div>
+      
+    </div> 
+	  <script src="main.js"></script>
+  </body>
+</html> 
