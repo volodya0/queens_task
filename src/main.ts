@@ -33,7 +33,6 @@ const func = (positions: number[] = []) : void => {
 
           if(positions.length === size && isNewSolution(positions)){
             solutions.push(positions)
-            console.log('solutions.length :>> ', solutions.length);
           }
 
           func(positions)
