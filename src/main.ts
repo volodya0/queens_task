@@ -3,11 +3,11 @@ const count : number = 8
 
 let solutions : number[][] = []
 
-const isNewSolution = (array : number[]) : boolean => {
+const isNewSolution = (positions : number[]) : boolean => {
   if(solutions === []) return true
   return solutions.every(sol => {
     const set = new Set(sol)
-    array.forEach(e => set.add(e))
+    positions.forEach(e => set.add(e))
     return set.size !== sol.length
   })
 }
@@ -29,55 +29,77 @@ const setQueen = (row : number, colum : number, area : boolean [][]) : boolean[]
   return newArea.map((row, i) => newArea[i] = row.slice(0,8))
 } 
 
-const func = async(area : boolean[][], queens: number[]) : Promise<void> => {
-  for(let row = 0; row < size; row++){
-    for(let colum = 0; colum < size; colum++){
+const func = (area: boolean[][], positions: number[] = []) : void => {
+  for(let row : number = 0; row < size; row++){
+    for(let colum : number = 0; colum < size; colum++){
+
       if(area[row][colum] === false){   
 
         const newArea = setQueen(row, colum, area)
-        const newQueens = [...queens]
-        newQueens.push(row*size + colum)
+        const newPositions = [...positions, row*size + colum]
 
-        if(newQueens.length === size && isNewSolution(newQueens)){
-          solutions.push(newQueens)
+        if(newPositions.length === size && isNewSolution(newPositions)){
+          solutions.push(newPositions)
         }
 
         if(!isFill(newArea))
-          func(newArea, newQueens)
+          func(newArea, newPositions)
 
-        if(newQueens[0] === size){
+        if(newPositions[0] === size){
           return
         }
-
+        
       }
     }
   }
 }
 
-const render = (area : boolean[][]) => {
-  block.innerHTML=''
-  area.forEach(row => {
-    const r = document.createElement('div')
-    row.forEach(e => {
-      const element = document.createElement('div')
-      element.className = 'field '+ e? 'fill' : 'empty'
-      r.appendChild(element)
-    })
-    r.className = 'r'
-    block.appendChild(r)
-  })
-}
+
+
+
 
 let start = document.getElementById("start-btn")
-let block = document.getElementById("main")
-let list = document.getElementById("solution-list")
 let result = document.getElementById("result")
 
-start.addEventListener('click', async() => {
-  await start.setAttribute('disabled', 'true')
-  await func(new Array(size).fill(null).map(() => new Array(size).fill(false)), [])
-  start.removeAttribute('disabled')
+// let desk = document.getElementById("desk")
+// let list = document.getElementById("list")
+
+start.addEventListener('click', () => {
+
+  func(new Array(size).fill(null).map(() => new Array(size).fill(false)))
+  
   result.innerText = 'Result : ' + solutions.length
+
+
+  // solutions.forEach((sol, i) => {
+  //   const element = document.createElement('p')
+  //   element.innerText = i + 1 + '. ' + sol.reduce((acc, num) => acc += `[${Math.floor(num/size)}, ${num%size}] `, '')
+  //   element.addEventListener('click', render.bind(null, sol))
+  //   list.appendChild(element)
+  // })
+
+  // render(solutions[0])
+
 })
 
-// render(new Array(size).fill(null).map(() => new Array(size).fill(0)))
+// const render = (positions : number[]) : void => {
+
+//   desk.innerHTML=''
+//   const area = new Array(size).fill(null).map(() => new Array(size).fill(false))
+//   positions.forEach(num => area[Math.floor(num/size)][num%size] = true);
+
+//   area.forEach((row, rowIndex) => {
+//     const r = document.createElement('div')
+//     row.forEach((e, columIndex) => {
+//       const element = document.createElement('div')
+//       let cls
+//       if(e) cls = 'queen'
+//       else cls = ((rowIndex + columIndex) % 2 === 0)? 'black' : 'white'
+//       element.className = cls
+//       r.appendChild(element)
+//     })
+//     r.className = 'r'
+//     desk.appendChild(r)
+//   })
+
+// }
