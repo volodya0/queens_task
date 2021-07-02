@@ -60,10 +60,13 @@ let list = document.getElementById("list")
 
 start.addEventListener('click', () => {
 
+  const startTime = performance.now()
+
   func()
   
-  result.innerText = 'Result : ' + solutions.length
-
+  const time = performance.now() - startTime
+  
+  result.innerText = 'Result : ' + solutions.length + ' Time : ' + (time)
 
   solutions.forEach((sol, i) => {
     const element = document.createElement('p')

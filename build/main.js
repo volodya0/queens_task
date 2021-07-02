@@ -39,8 +39,10 @@ let result = document.getElementById("result");
 let desk = document.getElementById("desk");
 let list = document.getElementById("list");
 start.addEventListener('click', () => {
+    const startTime = performance.now();
     func();
-    result.innerText = 'Result : ' + solutions.length;
+    const time = performance.now() - startTime;
+    result.innerText = 'Result : ' + solutions.length + ' Time : ' + (time);
     solutions.forEach((sol, i) => {
         const element = document.createElement('p');
         element.innerText = i + 1 + '. ' + sol.reduce((acc, num) => acc += `[${Math.floor(num / size)}, ${num % size}] `, '');
