@@ -8,6 +8,12 @@
         flex-direction: column;
       }
 
+      #list{
+        border: 1px solid black;
+        height: 75vh;
+        overflow: scroll;
+      }
+
       #list p{
         padding: 10px;
         margin: 10px;
@@ -33,7 +39,9 @@
         margin: 0;
         padding: 0;
       }
-
+      .green{
+        background-color: green;
+      }
 
       .r div{
         margin: 0;
@@ -59,10 +67,8 @@
   </head>
   <body>
     <div class="container">
-      <label>Area size : </label>
-      <input type="number" value="8" disabled>
-      <label>Queens count : </label>
-      <input type="number" value="8" disabled>
+      <label>count : </label>
+      <input id="input" type="number" value="8">
       <button id="start-btn">Start</button>
       <p id="result"></p>
       <div class="df">
