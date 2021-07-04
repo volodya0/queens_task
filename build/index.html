@@ -6,6 +6,8 @@
       .container{
         display: flex;
         flex-direction: column;
+        width: 70%;
+        border: 1px solid #000;
       }
 
       #list{
@@ -23,6 +25,7 @@
 
       .container *{
         margin: 5px;
+        width: max-content;
       }
 
       body{
@@ -62,6 +65,10 @@
       .black{
         background-color: black;
       }
+
+      .white{
+        background-color: blanchedalmond;
+      }
     </style>
     <title>Queens</title>
   </head>
@@ -69,6 +76,10 @@
     <div class="container">
       <label>count : </label>
       <input id="input" type="number" value="8">
+      <div class="df">
+        <input type="checkbox" id="show-solutions" name="show-solutions">
+        <label for="show-solutions">Show solutions</label>
+      </div>
       <button id="start-btn">Start</button>
       <p id="result"></p>
       <div class="df">
